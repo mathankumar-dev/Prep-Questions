@@ -25,5 +25,28 @@ Sample Output
 * */
 
 
-public class OnlineFoodDelivery {
+void main() {
+    Scanner in = new Scanner(System.in);
+    System.out.println("Enter Number of Orders : ");
+    int N = in.nextInt(); // number of orders
+
+    int[] arr = new int[N];
+    for (int i = 0; i < N; i++) {
+        arr[i] = in.nextInt();
+    }
+
+    int K = in.nextInt();
+    int left = 0;
+    int maxLen = 0 ;
+    int sum = 0;
+    for (int right = 0; right < arr.length ; right++) {
+        sum += arr[right];
+        while(sum > K){
+            sum -= arr[left];
+            left++;
+        }
+        maxLen = Math.max(maxLen,right - left +1);
+    }
+
+    System.out.println(maxLen);
 }
