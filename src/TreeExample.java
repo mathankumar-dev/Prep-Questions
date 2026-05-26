@@ -30,6 +30,22 @@ void postOrder(TreeNode root){
     System.out.print( root.data +" ");
 }
 
+void levelOrder(TreeNode root){
+    if(root == null) return;
+    Queue<TreeNode> queue = new LinkedList<>();
+    queue.add(root);
+    while (!queue.isEmpty()){
+        TreeNode current = queue.poll();
+        System.out.print(current.data + " ");
+        if(current.left != null){
+            queue.add(current.left);
+        }
+        if(current.right != null){
+            queue.add(current.right);
+        }
+    }
+}
+
 void main() {
     TreeNode root = new TreeNode(10);
 
@@ -54,4 +70,8 @@ void main() {
 
     System.out.println("PostOrder:");
     postOrder(root);
+    System.out.println();
+
+    System.out.println("LevelOrder:");
+    levelOrder(root);
 }
